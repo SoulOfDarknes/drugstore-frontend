@@ -18,11 +18,35 @@
             width: 100%;
             grid-gap: 1vw;
             flex-direction: column;
+            position: relative;
         }
         input {
             width: 80%;
             padding: 10px;
             border-radius: 10px;
+        }
+        button {
+            padding: 1vw 2vw;
+            border: 0;
+            background-color: $btn-color;
+            color: $text-color;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color $transition;
+            &:hover {
+                background-color: $btn-color-hover;
+            }
+        }
+        .calc {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .error {
+            color: red;
+            position: absolute;
+            bottom: -25px;
+            left: 0;
         }
     }
 }

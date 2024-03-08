@@ -1,68 +1,94 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormik } from 'formik';
 import { useAddOrderMutation } from '../../redux/features/ordersApi';
-import './styles.scss'
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { calculateTotalPrice } from '../../utils/functions/totalPrice';
+import { checkoutFormSchema } from '../../utils/validation/validationSchema'; // Імпортуйте вашу схему валідації
+import './styles.scss';
 
 const CheckoutForm: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
-  const [name, setName] = useState<string>('');
   const [addOrder, { isLoading }] = useAddOrderMutation();
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const totalPrice = calculateTotalPrice(cartItems);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      await addOrder({ items: [], email, phone, address }).unwrap();
-      // Очищення форми та відображення повідомлення про успіх можна реалізувати тут
-    } catch (err) {
-      // Обробка помилок може бути тут
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+    },
+    validationSchema: checkoutFormSchema,
+    onSubmit: async (values) => {
+      try {
+        await addOrder({ items: cartItems.map(item => ({name: item.name, productId: item._id, quantity: item.quantity })), ...values }).unwrap();
+        alert('Order submitted successfully!');
+        formik.resetForm();
+      } catch (err) {
+        alert('Failed to submit order');
+      }
+      console.log('cartItems', cartItems)
+    },
+    
+  });
 
   return (
     <div className='cart-form'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div>
-        <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Name</label>
           <input
-              type='text'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder='Name'
-              required
+            id="name"
+            name="name"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.name}
           />
+          {formik.errors.name ? <div className="error">{formik.errors.name}</div> : null}
         </div>
+
         <div>
-          <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Mail"
-        required
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
           />
+          {formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
         </div>
+
         <div>
-          <label htmlFor="phone">Phone:</label>
-      <input
-        type="tel"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        placeholder="Phone"
-        required
+          <label htmlFor="phone">Phone</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            onChange={formik.handleChange}
+            value={formik.values.phone}
           />
+          {formik.errors.phone ? <div className="error">{formik.errors.phone}</div> : null}
         </div>
+
         <div>
           <label htmlFor="address">Address</label>
-      <input
-        type='text'
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-        placeholder="Address"
-        required
+          <input
+            id="address"
+            name="address"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.address}
           />
+          {formik.errors.address ? <div className="error">{formik.errors.address}</div> : null}
         </div>
-      <button  type="submit">Submit</button>
+
+        <div className="total-price-section">
+          <p><b>Total Price:</b> ${totalPrice}</p>
+        </div>
+
+        <button type="submit" disabled={isLoading || totalPrice <= 0}>Submit</button>
       </form>
     </div>
   );

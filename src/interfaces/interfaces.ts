@@ -1,6 +1,6 @@
 export interface Order {
     id: string;
-    items: Array<{ productId: string; quantity: number }>;
+    items: Array<{ name: string; productId: string; quantity: number }>;
     email: string;
     phone: string;
     address: string;
