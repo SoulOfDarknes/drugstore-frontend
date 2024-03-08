@@ -32,3 +32,7 @@ export interface ShoppingCartProps {
     onRemoveFromCart: (itemId: string) => void;
     onQuantityChange: (itemId: string, newQuantity: number) => void;
 }
+
+export interface CartState {
+    items: Medicine[];
+}

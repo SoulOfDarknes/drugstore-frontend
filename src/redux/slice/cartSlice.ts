@@ -1,11 +1,7 @@
 // src/redux/features/cartSlice.ts
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Medicine } from '../../interfaces/interfaces';
-
-export interface CartState {
-    items: Medicine[];
-}
+import { CartState, Medicine } from '../../interfaces/interfaces';
 
 const initialState: CartState = {
     items: [],
@@ -17,7 +13,6 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action: PayloadAction<Medicine>) => {
             const existingIndex = state.items.findIndex((item) => item._id === action.payload._id);
-
             if (existingIndex >= 0) {
                 state.items[existingIndex] = {
                     ...state.items[existingIndex],
