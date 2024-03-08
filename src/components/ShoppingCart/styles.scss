@@ -1,0 +1,23 @@
+@import "../../assets/styles/var.scss";
+
+.cart-items-list {
+    flex: 1;
+    overflow: auto;
+    padding: 1vw;
+    grid-gap: 1vw;
+    display: flex;
+    flex-direction: column;
+    .cart-item {
+        display: flex;
+        justify-content: center;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            grid-gap: 1vw;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+@import "../../assets/styles/var.scss";
+
+.drugstore-list {
+    width: 30%;
+    ul {
+        padding: 2vw 3vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-gap: 2vw;
+        border-radius: $border-radius;
+        height: calc(100% - 4vw);
+        box-shadow: $box-shadow;
+        overflow: auto;
+        li {
+            padding: 2vw;
+            list-style: none;
+            text-align: center;
+            width: 50%;
+            cursor: pointer;
+            border-radius: $border-radius;
+            box-shadow: $box-shadow;
+            transition: box-shadow $transition;
+            &:hover {
+                box-shadow: $box-shadow-hover;
+            }
+        }
+        .selected {
+            background-color: $btn-color;
+            color: $text-color;
+        }
+    }
+}

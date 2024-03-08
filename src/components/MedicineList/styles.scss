@@ -1,0 +1,49 @@
+@import "../../assets/styles/var.scss";
+
+.medicine {
+    width: 70%;
+    display: flex;
+    grid-gap: 2vw;
+    padding: 1vw 2vw;
+    flex-wrap: wrap;
+    overflow: auto;
+    .medicine-item {
+        padding: 1vw 2vw;
+        height: max-content;
+        width: calc(50% - 6vw);
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+        box-shadow: $box-shadow;
+        transition: box-shadow $transition;
+        .medicine-image {
+            width: $img-width;
+            height: 100%;
+            object-fit: cover;
+        }
+        .medicine-details {
+            display: flex;
+            flex-direction: column;
+            grid-gap: 2vw;
+            .btn-wrap {
+                text-align: right;
+                button {
+                    background-color: $btn-color;
+                    color: #fff;
+                    border: 0;
+                    width: max-content;
+                    cursor: pointer;
+                    padding: 1vw 2vw;
+                    border-radius: $border-radius;
+                    transition: background-color $transition;
+                    &:hover {
+                        background-color: $btn-color-hover;
+                    }
+                }
+            }
+        }
+        &:hover {
+            box-shadow: $box-shadow-hover;
+        }
+    }
+}

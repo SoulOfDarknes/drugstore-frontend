@@ -1,0 +1,28 @@
+@import "../../assets/styles/var.scss";
+
+.cart-form {
+    flex: 1;
+    form {
+        padding: 2vw 3vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-gap: 2vw;
+        border-radius: 25px;
+        height: calc(100% - 4vw);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        overflow: auto;
+        justify-content: center;
+        > div {
+            display: flex;
+            width: 100%;
+            grid-gap: 1vw;
+            flex-direction: column;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    }
+}
