@@ -5,16 +5,18 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import storage from 'redux-persist/lib/storage';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import cartReducer from './slice/cartSlice'
+import favoritesSlice from './slice/favoritesSlice';
 
 const rootReducer = combineReducers({
     [ordersApi.reducerPath]: ordersApi.reducer,
     cart: cartReducer,
+    favorites: favoritesSlice,
 });
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['cart', ordersApi.reducerPath],
+    whitelist: ['cart', "favorites", ordersApi.reducerPath],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

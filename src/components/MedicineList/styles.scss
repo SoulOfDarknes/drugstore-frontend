@@ -4,9 +4,10 @@
     width: 70%;
     display: flex;
     grid-gap: 2vw;
-    padding: 1vw 2vw;
+    padding: 2vw;
     flex-wrap: wrap;
     overflow: auto;
+    position: relative;
     .medicine-item {
         padding: 1vw 2vw;
         height: max-content;
@@ -27,6 +28,10 @@
             grid-gap: 2vw;
             .btn-wrap {
                 text-align: right;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                grid-gap: 1vw;
                 button {
                     background-color: $btn-color;
                     color: #fff;
@@ -40,10 +45,27 @@
                         background-color: $btn-color-hover;
                     }
                 }
+                .favorite-toggle {
+                    cursor: pointer;
+                    img {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
             }
         }
         &:hover {
             box-shadow: $box-shadow-hover;
+        }
+    }
+    .sorting-controls {
+        position: absolute;
+        left: 0;
+        top: 0;
+        button {
+            border: 0;
+            background-color: inherit;
+            cursor: pointer;
         }
     }
 }

@@ -20,6 +20,8 @@ export interface Medicine {
     description: string;
     imageUrl?: string;
     quantity: number;
+    isFavorite?: boolean;
+    createdAt?: Date;
 }
 
 export interface MedicineListProps {
