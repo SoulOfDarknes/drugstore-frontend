@@ -1,6 +1,7 @@
 export interface Order {
+    _id: string;
     id: string;
-    items: Array<{ name: string; productId: string; quantity: number }>;
+    items: Array<{ name: string; productId: string; quantity: number; description: string; imageUrl?: string }>;
     email: string;
     phone: string;
     address: string;

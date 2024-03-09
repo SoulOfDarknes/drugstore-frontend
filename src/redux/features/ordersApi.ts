@@ -20,9 +20,14 @@ export const ordersApi = createApi({
         }),
         getStores: builder.query<Stores[], void>({
             query: () => 'stores',
-
+        }),
+        getOrdersBySearch: builder.query<Order[], { email?: string, phone?: string, id?: string }>({
+            query: (searchParams) => ({
+                url: 'orders/search',
+                params: searchParams
+            }),
         }),
     }),
 });
 
-export const { useGetOrdersQuery, useGetOrderByIdQuery, useAddOrderMutation, useGetStoresQuery } = ordersApi;
+export const { useGetOrdersQuery, useGetOrderByIdQuery, useAddOrderMutation, useGetStoresQuery, useGetOrdersBySearchQuery } = ordersApi;
