@@ -20,21 +20,21 @@ To set up the frontend environment, follow these steps:
 3. Install dependencies with:
 
 1. Clone the repository:
-```bash
+```
 git clone https://github.com/SoulOfDarknes/drug-store-frontend.git
-
-    ```bash
+```
+    ```
     npm install
     ```
 
 2. Navigate into the project directory:
 
-        ```bash
+        ```
     cd drug-store-frontend
     ```
 3. Install the dependencies:
 
-```bash
+```
 npm install
 ```
 
@@ -42,7 +42,7 @@ npm install
 
 To run the application in development mode with hot reload:
 
-```bash
+```
 npm start
-
+```
 This command will start the React application and automatically open it in your default web browser. By default, the application runs on http://localhost:3000.
