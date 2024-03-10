@@ -22,16 +22,19 @@ const CheckoutForm: React.FC = () => {
     validationSchema: checkoutFormSchema,
     onSubmit: async (values) => {
       try {
-        await addOrder({ items: cartItems.map(item => ({name: item.name, productId: item._id, quantity: item.quantity, description: item.description, imageUrl: item.imageUrl })), ...values }).unwrap();
+        await addOrder({ items: cartItems.map(item => ({name: item.name, productId: item._id, quantity: item.quantity, description: item.description, imageUrl: item.imageUrl,price: item.price, })), ...values }).unwrap();
         alert('Order submitted successfully!');
         formik.resetForm();
       } catch (err) {
         alert('Failed to submit order');
       }
+      console.log('values', values)
+      console.log('cartItems111', cartItems)
     },
     
   });
 
+console.log('cartItems', cartItems)
   return (
     <div className='cart-form'>
       <form onSubmit={formik.handleSubmit}>

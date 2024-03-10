@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import './styles.scss';
 
 interface SearchFormProps {
   onSearch: (searchTerm: string) => void;
@@ -13,7 +14,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='search'>
       <input
         type="text"
         placeholder="Enter email, phone number"

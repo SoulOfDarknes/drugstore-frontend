@@ -1,7 +1,9 @@
-.search {
-    grid-gap: 2vw;
+.history {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
+    grid-gap: 2vw;
+    h2 {
+        text-align: center;
+    }
 }
