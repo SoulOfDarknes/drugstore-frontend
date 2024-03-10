@@ -23,15 +23,14 @@ To set up the frontend environment, follow these steps:
 ```
 git clone https://github.com/SoulOfDarknes/drug-store-frontend.git
 ```
-    ```
-    npm install
-    ```
-
+ ```
+ npm install
+ ```
 2. Navigate into the project directory:
 
-        ```
-    cd drug-store-frontend
-    ```
+ ```
+cd drug-store-frontend
+  ```
 3. Install the dependencies:
 
 ```
