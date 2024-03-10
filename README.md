@@ -21,7 +21,7 @@ To set up the frontend environment, follow these steps:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/drug-store-frontend.git
+git clone https://github.com/SoulOfDarknes/drug-store-frontend.git
 
     ```bash
     npm install
